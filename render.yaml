@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: effective-config-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: APP_PORT
+        value: "8884"
+      - key: APP_LOG_LEVEL
+        value: "error"
+      - key: APP_API_KEY
+        value: "key-3prb1o5ods"
